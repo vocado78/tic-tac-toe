@@ -15,5 +15,5 @@ export default function Preference({ question, children }) {
 
 Preference.propTypes = {
   question: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.arrayOf(PropTypes.element).isRequired
 };
