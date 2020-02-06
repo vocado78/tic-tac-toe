@@ -1,8 +1,15 @@
 import React from 'react';
 
+import Board from '../Board/Board';
+import TextArea from '../TextArea/TextArea';
+import GameDataProvider from '../store/GameDataProvider';
+
 
 export default function App() {
   return (
-    <div>Hello I am the App!</div>
+    <GameDataProvider>
+      <Board />
+      <TextArea />
+    </GameDataProvider>
   );
 }
