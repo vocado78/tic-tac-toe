@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Preference from './Preference/Preference';
 import { RadioButton } from '../Button';
 import Status from './Status/Status';
-import GameContext from '../store/GameContext';
+import GameContext from '../../store/GameContext';
 
 
 export default class TextArea extends Component {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GameContext from '../store/GameContext';
+import GameContext from '../../store/GameContext';
 import Square from './Square/Square';
 import './Board.css';
 

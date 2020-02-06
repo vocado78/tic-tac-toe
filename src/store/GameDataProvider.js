@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import GameContext from './GameContext';
-import GameService from './service';
+import GameService from '../services/GameService';
 
 
 export default class GameDataProvider extends Component {
