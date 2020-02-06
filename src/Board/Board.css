@@ -1,0 +1,22 @@
+.board {
+  width: 324px;
+  padding: 7px 10px;
+  background-color: #F2F2F2;
+  border: 17px solid #F2F2F2;
+  border-radius: 1px;
+  border-spacing: 0;
+  box-shadow: 0 1px 2px 2px #D9D9D9 inset, 0 2px 4px 2px #1A1A1A;
+  position: relative;
+}
+
+.board::before {
+  content: "";
+  display: block;
+  height: 275px;
+  width: 270px;
+  position: absolute;
+  z-index: 1;
+  top: 6;
+  left: 9;
+  background: url(https://res.cloudinary.com/vocado78/image/upload/v1516095483/fireplace_bjq42f.jpg);
+}
