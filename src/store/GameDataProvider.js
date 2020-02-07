@@ -33,13 +33,30 @@ export default class GameDataProvider extends Component {
       });
     };
 
+    this.setStatusMessage = () => {
+      this.setState((prevState) => {
+        const newMessage = GameService.setStatusMessage(prevState.squares, prevState.nextPlayer);
+        return { statusMessage: newMessage };
+      });
+    };
+
+    this.clearBoardIfGameOver = () => {
+      this.setState((prevState) => {
+        const newSquares = GameService.clearBoardIfGameOver(prevState.squares);
+        return { squares: newSquares };
+      });
+    };
+
     this.state = {
       squares: Array(9).fill(null),
-      nextPlayer: 'X',
+      nextPlayer: '',
       singlePlayer: null,
+      statusMessage: '',
       setSquareValue: this.setSquareValue,
       toggleNextPlayer: this.toggleNextPlayer,
-      setGameType: this.setGameType
+      setGameType: this.setGameType,
+      setStatusMessage: this.setStatusMessage,
+      clearBoardIfGameOver: this.clearBoardIfGameOver
     };
   }
 

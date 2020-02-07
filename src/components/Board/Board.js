@@ -10,11 +10,23 @@ export default class Board extends React.Component {
     toggleNextPlayer();
   }
 
+  setStatusMessage() {
+    const { setStatusMessage } = this.context;
+    setStatusMessage();
+  }
+
+  clearBoardIfGameOver() {
+    const { clearBoardIfGameOver } = this.context;
+    clearBoardIfGameOver();
+  }
+
   handleSquareClick(i) {
     const { setSquareValue } = this.context;
     setSquareValue(i);
 
     this.setNextPlayer();
+    this.setStatusMessage();
+    this.clearBoardIfGameOver();
   }
 
   renderSquare(i) {
