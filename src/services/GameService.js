@@ -30,7 +30,7 @@ const GameService = {
     return squares;
   },
 
-  setStatusMessage(squares, nextPlayer) {
+  getStatusMessage(squares, nextPlayer) {
     const boardIsFull = this.boardIsFull(squares);
     const winner = this.getWinner(squares);
     let message;
