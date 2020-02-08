@@ -1,41 +1,66 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Preference from './Preference/Preference';
 import { RadioButton } from '../Button';
 import Status from './Status/Status';
-import GameContext from '../../store/GameContext';
-// import GameService from '../../services/GameService';
+import GameService from '../../services/GameService';
+
 
 export default class TextArea extends Component {
   handleGameTypeClick = (e) => {
-    const { setGameType } = this.context;
+    const { setGameType } = this.props;
     setGameType(e.target.id);
   }
 
   handleSymbolClick = (e) => {
-    const { toggleNextPlayer } = this.context;
+    const { toggleNextPlayer } = this.props;
     toggleNextPlayer(e.target.value);
   }
 
-  render() {
-    const { singlePlayer, statusMessage } = this.context;
+  renderPreferences() {
+    const { singlePlayer, nextPlayer } = this.props;
     const question2 = singlePlayer ? 'Would you like to be X or O?' : 'Player 1, would you like to be X or O?';
-    // const statusMessage = GameService.setStatusMessage(squares, nextPlayer);
+
+    if (nextPlayer) {
+      return null;
+    }
+
+    return singlePlayer !== null ? (
+      <Preference question={question2}>
+        <RadioButton id="x" name="symbol" label="X" onClick={this.handleSymbolClick} />
+        <RadioButton id="o" name="symbol" label="O" onClick={this.handleSymbolClick} />
+      </Preference>
+    ) : (
+      <Preference question="How would you like to play?">
+        <RadioButton id="single" name="game" label="1 Player" onClick={this.handleGameTypeClick} />
+        <RadioButton id="pair" name="game" label="2 Players" onClick={this.handleGameTypeClick} />
+      </Preference>
+    );
+  }
+
+  render() {
+    const { squares, nextPlayer } = this.props;
+    const statusMessage = GameService.getStatusMessage(squares, nextPlayer);
 
     return (
       <div className="text-area">
-        <Status message={statusMessage} />
-        <Preference question="How would you like to play?">
-          <RadioButton id="single" name="game" label="1 Player" onClick={this.handleGameTypeClick} />
-          <RadioButton id="pair" name="game" label="2 Players" onClick={this.handleGameTypeClick} />
-        </Preference>
-        <Preference question={question2}>
-          <RadioButton id="x" name="symbol" label="X" onClick={this.handleSymbolClick} />
-          <RadioButton id="o" name="symbol" label="O" onClick={this.handleSymbolClick} />
-        </Preference>
+        {nextPlayer && <Status message={statusMessage} />}
+        {this.renderPreferences()}
       </div>
     );
   }
 }
 
-TextArea.contextType = GameContext;
+TextArea.defaultProps = {
+  singlePlayer: null,
+  nextPlayer: ''
+};
+
+TextArea.propTypes = {
+  squares: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])).isRequired,
+  singlePlayer: PropTypes.bool,
+  nextPlayer: PropTypes.string,
+  setGameType: PropTypes.func.isRequired,
+  toggleNextPlayer: PropTypes.func.isRequired
+};

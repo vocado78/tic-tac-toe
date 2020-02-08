@@ -1,40 +1,16 @@
 import React from 'react';
-
-import GameContext from '../../store/GameContext';
+import PropTypes from 'prop-types';
 import Square from './Square/Square';
 import './Board.css';
 
+
 export default class Board extends React.Component {
-  setNextPlayer() {
-    const { toggleNextPlayer } = this.context;
-    toggleNextPlayer();
-  }
-
-  setStatusMessage() {
-    const { setStatusMessage } = this.context;
-    setStatusMessage();
-  }
-
-  clearBoardIfGameOver() {
-    const { clearBoardIfGameOver } = this.context;
-    clearBoardIfGameOver();
-  }
-
-  handleSquareClick(i) {
-    const { setSquareValue } = this.context;
-    setSquareValue(i);
-
-    this.setNextPlayer();
-    this.setStatusMessage();
-    this.clearBoardIfGameOver();
-  }
-
   renderSquare(i) {
-    const { squares } = this.context;
+    const { squares, handleSquareClick } = this.props;
     return (
       <Square
         value={squares[i]}
-        onClick={() => this.handleSquareClick(i)}
+        onClick={() => handleSquareClick(i)}
       />
     );
   }
@@ -68,4 +44,7 @@ export default class Board extends React.Component {
   }
 }
 
-Board.contextType = GameContext;
+Board.propTypes = {
+  squares: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])).isRequired,
+  handleSquareClick: PropTypes.func.isRequired
+};
