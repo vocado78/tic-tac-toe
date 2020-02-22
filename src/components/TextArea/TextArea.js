@@ -40,8 +40,8 @@ export default class TextArea extends Component {
   }
 
   render() {
-    const { squares, nextPlayer } = this.props;
-    const statusMessage = GameService.getStatusMessage(squares, nextPlayer);
+    const { board, nextPlayer } = this.props;
+    const statusMessage = GameService.getStatusMessage(board, nextPlayer);
 
     return (
       <div className="text-area">
@@ -58,7 +58,7 @@ TextArea.defaultProps = {
 };
 
 TextArea.propTypes = {
-  squares: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])).isRequired,
+  board: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])).isRequired,
   singlePlayer: PropTypes.bool,
   nextPlayer: PropTypes.string,
   setGameType: PropTypes.func.isRequired,

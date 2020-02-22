@@ -12,7 +12,7 @@ export default class Board extends Component {
       return (
         <Square
           key={i}
-          value={this.props.squares[i]}
+          value={this.props.board[i]}
           index={i}
           handleClick={this.props.handleSquareClick}
         />
@@ -44,6 +44,6 @@ export default class Board extends Component {
 }
 
 Board.propTypes = {
-  squares: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])).isRequired,
+  board: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])).isRequired,
   handleSquareClick: PropTypes.func.isRequired
 };

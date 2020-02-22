@@ -10,29 +10,29 @@ const rows = [
 ];
 
 const GameService = {
-  setSquareValue(squares, i, nextPlayer) {
-    const newSquares = [...squares];
+  setSquareValue(board, i, nextPlayer) {
+    const newBoard = [...board];
 
-    if (!newSquares[i]) {
-      newSquares[i] = nextPlayer === 'X' ? 'X' : 'O';
+    if (!newBoard[i]) {
+      newBoard[i] = nextPlayer === 'X' ? 'X' : 'O';
     }
-    return newSquares;
+    return newBoard;
   },
 
-  clearBoardIfGameOver(squares) {
-    const boardIsFull = this.boardIsFull(squares);
-    const winner = this.getWinner(squares);
+  clearBoardIfGameOver(board) {
+    const boardIsFull = this.boardIsFull(board);
+    const winner = this.getWinner(board);
 
     if (winner || boardIsFull) {
       return Array(9).fill(null);
     }
 
-    return squares;
+    return board;
   },
 
-  getStatusMessage(squares, nextPlayer) {
-    const boardIsFull = this.boardIsFull(squares);
-    const winner = this.getWinner(squares);
+  getStatusMessage(board, nextPlayer) {
+    const boardIsFull = this.boardIsFull(board);
+    const winner = this.getWinner(board);
     let message;
 
     if (winner) {
@@ -48,21 +48,21 @@ const GameService = {
     return message;
   },
 
-  getWinner(squares) {
+  getWinner(board) {
     let winner = '';
 
     rows.forEach((row) => {
       const [a, b, c] = row;
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        winner = squares[a];
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        winner = board[a];
       }
     });
 
     return winner;
   },
 
-  boardIsFull(squares) {
-    return squares.indexOf(null) < 0;
+  boardIsFull(board) {
+    return board.indexOf(null) < 0;
   }
 };
 

@@ -10,7 +10,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      squares: Array(9).fill(null),
+      board: Array(9).fill(null),
       nextPlayer: '',
       singlePlayer: null
     };
@@ -22,8 +22,8 @@ export default class App extends Component {
 
   setSquareValue = (i) => {
     this.setState((prevState) => {
-      const newSquares = GameService.setSquareValue(prevState.squares, i, prevState.nextPlayer);
-      return { squares: newSquares };
+      const newBoard = GameService.setSquareValue(prevState.board, i, prevState.nextPlayer);
+      return { board: newBoard };
     });
   };
 
@@ -39,8 +39,8 @@ export default class App extends Component {
 
   clearBoardIfGameOver = () => {
     this.setState((prevState) => {
-      const newSquares = GameService.clearBoardIfGameOver(prevState.squares);
-      return { squares: newSquares };
+      const newBoard = GameService.clearBoardIfGameOver(prevState.board);
+      return { board: newBoard };
     });
   }
 
@@ -62,14 +62,13 @@ export default class App extends Component {
   }
 
   render() {
-    const { squares, singlePlayer, nextPlayer } = this.state;
     return (
       <>
-        <Board squares={squares} handleSquareClick={this.handleSquareClick} />
+        <Board board={this.state.board} handleSquareClick={this.handleSquareClick} />
         <TextArea
-          squares={squares}
-          singlePlayer={singlePlayer}
-          nextPlayer={nextPlayer}
+          board={this.state.board}
+          singlePlayer={this.state.singlePlayer}
+          nextPlayer={this.state.nextPlayer}
           setGameType={this.setGameType}
           toggleNextPlayer={this.toggleNextPlayer}
         />
