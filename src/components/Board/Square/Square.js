@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './Square.css';
 
-export default function Square({ value, onClick }) {
-  return (
-    <td className="square">
-      <button type="button" onClick={onClick}>{value}</button>
-    </td>
-  );
+
+export default class Square extends Component {
+  handleClick = () => {
+    this.props.handleClick(this.props.index);
+  }
+
+  render() {
+    return (
+      <td className="square">
+        <button type="button" onClick={this.handleClick}>{this.props.value}</button>
+      </td>
+    );
+  }
 }
 
 Square.defaultProps = {
@@ -17,5 +24,6 @@ Square.defaultProps = {
 
 Square.propTypes = {
   value: PropTypes.string,
-  onClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired
 };

@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import Square from './Square/Square';
 import './Board.css';
+import ROWS from '../../constants';
 
 
-export default class Board extends React.Component {
-  renderSquare(i) {
-    const { squares, handleSquareClick } = this.props;
-    return (
-      <Square
-        value={squares[i]}
-        onClick={() => handleSquareClick(i)}
-      />
-    );
+export default class Board extends Component {
+  renderRow(row) {
+    return row.map((i) => {
+      return (
+        <Square
+          key={i}
+          value={this.props.squares[i]}
+          index={i}
+          handleClick={this.props.handleSquareClick}
+        />
+      );
+    });
   }
 
   render() {
@@ -22,19 +27,13 @@ export default class Board extends React.Component {
         <table className="board">
           <tbody>
             <tr className="row">
-              {this.renderSquare(0)}
-              {this.renderSquare(1)}
-              {this.renderSquare(2)}
+              {this.renderRow(ROWS[0])}
             </tr>
             <tr className="row">
-              {this.renderSquare(3)}
-              {this.renderSquare(4)}
-              {this.renderSquare(5)}
+              {this.renderRow(ROWS[1])}
             </tr>
             <tr className="row">
-              {this.renderSquare(6)}
-              {this.renderSquare(7)}
-              {this.renderSquare(8)}
+              {this.renderRow(ROWS[2])}
             </tr>
           </tbody>
         </table>
