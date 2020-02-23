@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Board from '../Board/Board';
 import TextArea from '../TextArea/TextArea';
-import GameService from '../../services/GameService';
+import { setSquareValue, clearBoardIfGameOver } from '../../services/gameLogic';
 import getBestEmptySquare from '../../services/ai';
 
 
@@ -24,7 +24,7 @@ export default class App extends Component {
 
   setSquareValue = (i) => {
     this.setState((prevState) => {
-      const newBoard = GameService.setSquareValue(prevState.board, i, prevState.nextPlayer);
+      const newBoard = setSquareValue(prevState.board, i, prevState.nextPlayer);
       return { board: newBoard };
     });
   };
@@ -41,7 +41,7 @@ export default class App extends Component {
 
   clearBoardIfGameOver = () => {
     this.setState((prevState) => {
-      const newBoard = GameService.clearBoardIfGameOver(prevState.board);
+      const newBoard = clearBoardIfGameOver(prevState.board);
       return { board: newBoard };
     });
   }

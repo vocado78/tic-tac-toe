@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Preference from './Preference/Preference';
 import { RadioButton } from '../Button';
 import Status from './Status/Status';
-import GameService from '../../services/GameService';
+import { getStatusMessage } from '../../services/gameLogic';
 
 
 export default class TextArea extends Component {
@@ -41,7 +41,7 @@ export default class TextArea extends Component {
 
   render() {
     const { board, nextPlayer } = this.props;
-    const statusMessage = GameService.getStatusMessage(board, nextPlayer);
+    const statusMessage = getStatusMessage(board, nextPlayer);
 
     return (
       <div className="text-area">
