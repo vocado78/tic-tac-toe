@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Board from '../Board/Board';
 import TextArea from '../TextArea/TextArea';
+import { ResetButton } from '../Button';
 import { setSquareValue, clearBoardIfGameOver } from '../../services/gameLogic';
 import getBestEmptySquare from '../../services/ai';
 
@@ -80,6 +81,14 @@ export default class App extends Component {
     this.delaySimulateComputerClick();
   }
 
+  handleReset = () => {
+    this.setState({
+      board: Array(9).fill(null),
+      nextPlayer: '',
+      singlePlayer: null
+    });
+  }
+
   render() {
     return (
       <>
@@ -91,6 +100,7 @@ export default class App extends Component {
           setGameType={this.setGameType}
           toggleNextPlayer={this.toggleNextPlayer}
         />
+        <ResetButton onClick={this.handleReset} />
       </>
     );
   }
