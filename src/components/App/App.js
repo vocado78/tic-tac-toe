@@ -63,16 +63,16 @@ export default class App extends Component {
     this.delayClearBoard();
   }
 
+  simulateComputerClick = () => {
+    const i = getBestEmptySquare(this.state.board, this.state.nextPlayer);
+    this.makeMove(i);
+  }
+
   delaySimulateComputerClick = () => {
     if (this.state.singlePlayer) {
       if (this.timeout2) clearTimeout(this.timeout2);
       this.timeout2 = setTimeout(() => this.simulateComputerClick(), 2000);
     }
-  }
-
-  simulateComputerClick = () => {
-    const i = getBestEmptySquare(this.state.board, this.state.nextPlayer);
-    this.makeMove(i);
   }
 
   handleSquareClick = (i) => {
