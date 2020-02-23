@@ -14,3 +14,9 @@ export const ALL_ROWS = [
   [0, 4, 8],
   [2, 4, 6]
 ];
+
+export const QUESTIONS = {
+  GAME_TYPE: 'How would you like to play?',
+  CHAR_TYPE_SINGLE: 'Would you like to be X or O?',
+  CHAR_TYPE_PAIR: 'Player 1, would you like to be X or O?'
+};

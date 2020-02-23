@@ -5,36 +5,56 @@ import Preference from './Preference/Preference';
 import { RadioButton } from '../Button';
 import Status from './Status/Status';
 import { getStatusMessage } from '../../services/gameLogic';
+import { QUESTIONS } from '../../constants';
 
 
 export default class TextArea extends Component {
   handleGameTypeClick = (e) => {
-    const { setGameType } = this.props;
-    setGameType(e.target.id);
+    this.props.setGameType(e.target.id);
   }
 
   handleSymbolClick = (e) => {
-    const { toggleNextPlayer } = this.props;
-    toggleNextPlayer(e.target.value);
+    this.props.toggleNextPlayer(e.target.value);
   }
 
   renderPreferences() {
-    const { singlePlayer, nextPlayer } = this.props;
-    const question2 = singlePlayer ? 'Would you like to be X or O?' : 'Player 1, would you like to be X or O?';
+    const question = this.props.singlePlayer
+      ? QUESTIONS.CHAR_TYPE_SINGLE
+      : QUESTIONS.CHAR_TYPE_PAIR;
 
-    if (nextPlayer) {
+    if (this.props.nextPlayer) {
       return null;
     }
 
-    return singlePlayer !== null ? (
-      <Preference question={question2}>
-        <RadioButton id="x" name="symbol" label="X" onClick={this.handleSymbolClick} />
-        <RadioButton id="o" name="symbol" label="O" onClick={this.handleSymbolClick} />
+    return this.props.singlePlayer !== null ? (
+      <Preference question={question}>
+        <RadioButton
+          id="x"
+          name="char"
+          label="X"
+          onClick={this.handleSymbolClick}
+        />
+        <RadioButton
+          id="o"
+          name="char"
+          label="O"
+          onClick={this.handleSymbolClick}
+        />
       </Preference>
     ) : (
-      <Preference question="How would you like to play?">
-        <RadioButton id="single" name="game" label="1 Player" onClick={this.handleGameTypeClick} />
-        <RadioButton id="pair" name="game" label="2 Players" onClick={this.handleGameTypeClick} />
+      <Preference question={QUESTIONS.GAME_TYPE}>
+        <RadioButton
+          id="single"
+          name="game"
+          label="1 Player"
+          onClick={this.handleGameTypeClick}
+        />
+        <RadioButton
+          id="pair"
+          name="game"
+          label="2 Players"
+          onClick={this.handleGameTypeClick}
+        />
       </Preference>
     );
   }
