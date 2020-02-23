@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Square from './Square/Square';
 import './Board.css';
-import ROWS from '../../constants';
+import { HORIZONTAL_ROWS } from '../../constants';
 
 
 export default class Board extends Component {
@@ -27,13 +27,13 @@ export default class Board extends Component {
         <table className="board">
           <tbody>
             <tr className="row">
-              {this.renderRow(ROWS[0])}
+              {this.renderRow(HORIZONTAL_ROWS[0])}
             </tr>
             <tr className="row">
-              {this.renderRow(ROWS[1])}
+              {this.renderRow(HORIZONTAL_ROWS[1])}
             </tr>
             <tr className="row">
-              {this.renderRow(ROWS[2])}
+              {this.renderRow(HORIZONTAL_ROWS[2])}
             </tr>
           </tbody>
         </table>

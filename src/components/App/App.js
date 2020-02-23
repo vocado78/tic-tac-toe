@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Board from '../Board/Board';
 import TextArea from '../TextArea/TextArea';
 import GameService from '../../services/GameService';
+import getBestEmptySquare from '../../services/ai';
 
 
 export default class App extends Component {
@@ -17,7 +18,8 @@ export default class App extends Component {
   }
 
   componentWillUnmount() {
-    if (this.timeout) clearTimeout(this.timeout);
+    if (this.timeout1) clearTimeout(this.timeout1);
+    if (this.timeout2) clearTimeout(this.timeout2);
   }
 
   setSquareValue = (i) => {
@@ -45,8 +47,8 @@ export default class App extends Component {
   }
 
   delayClearBoard = () => {
-    if (this.timeout) clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => this.clearBoardIfGameOver(), 2000);
+    if (this.timeout1) clearTimeout(this.timeout1);
+    this.timeout1 = setTimeout(() => this.clearBoardIfGameOver(), 2000);
   }
 
   setGameType = (id) => {
@@ -55,10 +57,27 @@ export default class App extends Component {
     });
   }
 
-  handleSquareClick = (i) => {
+  makeMove = (i) => {
     this.setSquareValue(i);
     this.toggleNextPlayer();
     this.delayClearBoard();
+  }
+
+  delaySimulateComputerClick = () => {
+    if (this.state.singlePlayer) {
+      if (this.timeout2) clearTimeout(this.timeout2);
+      this.timeout2 = setTimeout(() => this.simulateComputerClick(), 2000);
+    }
+  }
+
+  simulateComputerClick = () => {
+    const i = getBestEmptySquare(this.state.board, this.state.nextPlayer);
+    this.makeMove(i);
+  }
+
+  handleSquareClick = (i) => {
+    this.makeMove(i);
+    this.delaySimulateComputerClick();
   }
 
   render() {
@@ -76,5 +95,3 @@ export default class App extends Component {
     );
   }
 }
-
-// single player is needed for AI or not

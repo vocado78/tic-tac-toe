@@ -1,13 +1,5 @@
-const rows = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
-];
+import { ALL_ROWS } from '../constants';
+
 
 const GameService = {
   setSquareValue(board, i, nextPlayer) {
@@ -44,14 +36,14 @@ const GameService = {
     if (!winner && !boardIsFull) {
       message = `Next player is ${nextPlayer}`;
     }
-    console.log(message);
+
     return message;
   },
 
   getWinner(board) {
     let winner = '';
 
-    rows.forEach((row) => {
+    ALL_ROWS.forEach((row) => {
       const [a, b, c] = row;
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
         winner = board[a];
