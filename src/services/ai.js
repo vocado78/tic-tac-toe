@@ -1,4 +1,4 @@
-import { HORIZONTAL_ROWS } from '../constants';
+import { ALL_ROWS } from '../constants';
 
 
 const getWinningSquare = (board, player) => {
@@ -15,12 +15,12 @@ const getWinningSquare = (board, player) => {
     }
   });
 
-  // if product of row values is 50, it's a possible win
-  HORIZONTAL_ROWS.forEach((row) => {
+  // if product of row values is 50 or 18, it's a possible win
+  ALL_ROWS.forEach((row) => {
     const [a, b, c] = row; // e.g. [0, 1, 2]
     product = boardValues[a] * boardValues[b] * boardValues[c]; // e.g. 5 * 5 * 2
 
-    if (product === 50) {
+    if (product === 50 || product === 18) {
       if (boardValues[a] === 2) square = a;
       if (boardValues[b] === 2) square = b;
       if (boardValues[c] === 2) square = c;
