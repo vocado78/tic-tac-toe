@@ -21,9 +21,12 @@ export default class Board extends Component {
   }
 
   render() {
+    const leftShutter = this.props.nextPlayer ? 'shutters left open-left' : 'shutters left';
+    const rightShutter = this.props.nextPlayer ? 'shutters right open-right' : 'shutters right';
+
     return (
       <div className="board-wrapper">
-        <div className="open-shutters left" />
+        <div className={leftShutter} />
         <table className="board">
           <tbody>
             <tr className="row">
@@ -37,13 +40,18 @@ export default class Board extends Component {
             </tr>
           </tbody>
         </table>
-        <div className="open-shutters right" />
+        <div className={rightShutter} />
       </div>
     );
   }
 }
 
+Board.defaultProps = {
+  nextPlayer: ''
+};
+
 Board.propTypes = {
   board: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.object, PropTypes.string])).isRequired,
-  handleSquareClick: PropTypes.func.isRequired
+  handleSquareClick: PropTypes.func.isRequired,
+  nextPlayer: PropTypes.string
 };

@@ -1,3 +1,9 @@
+.board-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 .board {
   width: 324px;
   padding: 7px 10px;
@@ -19,4 +25,72 @@
   top: 6;
   left: 9;
   background: url(https://res.cloudinary.com/vocado78/image/upload/v1516095483/fireplace_bjq42f.jpg);
+}
+
+.shutters {
+  display: none;
+  width: 162px;
+  height: 324px;
+  background: #F2F2F2;
+  background: 
+    linear-gradient(90deg, rgb(217, 217, 217), rgb(242, 242, 242),
+    rgb(217, 217, 217), rgb(242, 242, 242) 10%, 
+    rgb(217, 217, 217), rgb(242, 242, 242), rgb(217, 217, 217));
+  background-size: 50%;
+  box-shadow: 0 2px 4px 1px #1A1A1A;
+  position: relative;
+  z-index: 3;
+}
+
+.left {
+  margin-right: -162px;
+}
+
+.right {
+  margin-left: -162px;
+}
+
+@media screen and (min-width: 720px) {
+  @keyframes left-shutter {
+    from {
+      right: 0;
+      top: 0px;
+    }
+
+    to {
+      right: 152px;
+      top: 0px;
+    }
+  }
+  @keyframes right-shutter {
+    from {
+      left: 0px;
+      top: 0px;
+    }
+    
+    to {
+      left: 152px;
+      top: 0px;
+    }
+  }
+
+  .board {
+    width: 45%;
+  }
+
+  .shutters {
+    display: block;
+  }
+  
+  .open-left {
+    animation-name: left-shutter;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+  }
+
+  .open-right {
+    animation-name: right-shutter;
+    animation-duration: 4s;
+    animation-fill-mode: both;
+  }
 }

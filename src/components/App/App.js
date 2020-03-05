@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import './App.css';
 import Board from '../Board/Board';
 import TextArea from '../TextArea/TextArea';
 import { ResetButton } from '../Button';
@@ -92,7 +93,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Board board={this.state.board} handleSquareClick={this.handleSquareClick} />
+        <Board board={this.state.board} handleSquareClick={this.handleSquareClick} nextPlayer={this.state.nextPlayer} />
         <TextArea
           board={this.state.board}
           singlePlayer={this.state.singlePlayer}
