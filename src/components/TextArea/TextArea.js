@@ -64,10 +64,10 @@ export default class TextArea extends Component {
     const statusMessage = getStatusMessage(board, nextPlayer);
 
     return (
-      <div className="text-area">
+      <>
         {nextPlayer && <Status message={statusMessage} />}
         {this.renderPreferences()}
-      </div>
+      </>
     );
   }
 }

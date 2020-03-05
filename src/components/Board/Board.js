@@ -29,13 +29,13 @@ export default class Board extends Component {
         <div className={leftShutter} />
         <table className="board">
           <tbody>
-            <tr className="row">
+            <tr>
               {this.renderRow(HORIZONTAL_ROWS[0])}
             </tr>
-            <tr className="row">
+            <tr>
               {this.renderRow(HORIZONTAL_ROWS[1])}
             </tr>
-            <tr className="row">
+            <tr>
               {this.renderRow(HORIZONTAL_ROWS[2])}
             </tr>
           </tbody>
