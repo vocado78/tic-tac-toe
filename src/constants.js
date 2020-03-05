@@ -20,3 +20,9 @@ export const QUESTIONS = {
   CHAR_TYPE_SINGLE: 'Would you like to be X or O?',
   CHAR_TYPE_PAIR: 'Player 1, would you like to be X or O?'
 };
+
+export const STATUS = {
+  WINNER: 'We have a winner! Congrats to player ',
+  DRAW: 'It was a draw, nice try though.',
+  NEXT: 'Next player is: ',
+};

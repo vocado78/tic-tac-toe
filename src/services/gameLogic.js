@@ -1,4 +1,4 @@
-import { ALL_ROWS } from '../constants';
+import { ALL_ROWS, STATUS } from '../constants';
 
 
 const getWinner = (board) => {
@@ -44,13 +44,13 @@ export const getStatusMessage = (board, nextPlayer) => {
   let message;
 
   if (winner) {
-    message = `We have a winner! Congrats to player ${winner}.`;
+    message = `${STATUS.WINNER}${winner}.`;
   }
   if (!winner && fullBoard) {
-    message = 'It was a draw...nice try though.';
+    message = STATUS.DRAW;
   }
   if (!winner && !fullBoard) {
-    message = `Next player is ${nextPlayer}`;
+    message = `${STATUS.NEXT}${nextPlayer}`;
   }
 
   return message;
