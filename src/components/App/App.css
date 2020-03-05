@@ -10,6 +10,8 @@ body {
   text-align: center;
   background-color: #030B16;
   color: #F2F2F2;
+  text-shadow: 2px 3px 4px #404040;
+  letter-spacing: 0.07em;
 }
 
 #root {
