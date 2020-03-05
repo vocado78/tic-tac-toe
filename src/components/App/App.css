@@ -16,17 +16,19 @@ body {
 
 #root {
   width: 100%;
-  height: 550px;
-  margin: 50px auto;
+  height: 100vh;
+  margin: 0;
   padding-top: 50px;
   background: #801818;
   background: linear-gradient(90deg, rgb(129, 24, 24) 55%, rgb(108, 20, 20) 1%, rgb(129, 24, 24), rgb(108, 20, 20));
   background-size: 50px;
-  box-shadow: 0 5px 20px 10px #030b16 inset;
 }
 
 @media screen and (min-width: 720px) {
   #root {
     width: 720px;
+    height: 550px;
+    margin: 50px auto;
+    box-shadow: 0 5px 20px 10px #030b16 inset;
   }
 }
