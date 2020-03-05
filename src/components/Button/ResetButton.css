@@ -1,0 +1,16 @@
+.reset {
+  font-family: inherit;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 2px 12px;
+  margin-top: 20px;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+.reset:hover {
+  cursor: pointer;
+  border: 1px solid #f2f2f2;
+}

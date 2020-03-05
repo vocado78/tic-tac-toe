@@ -5,7 +5,8 @@
 }
 
 body {
-  font-family: 'Homemade Apple', cursive;
+  font-family: cursive;
+  font-size: 1.125rem;
   text-align: center;
   background-color: #030B16;
   color: #F2F2F2;

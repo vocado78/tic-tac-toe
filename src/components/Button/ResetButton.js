@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import './ResetButton.css';
 
 export default function ResetButton({ onClick }) {
   return (

@@ -1,0 +1,12 @@
+input[type=radio] {
+  visibility: hidden;
+}
+
+label:first-of-type {
+  margin-right: 15px;
+}
+
+label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
