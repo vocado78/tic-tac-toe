@@ -2,11 +2,17 @@ input[type=radio] {
   visibility: hidden;
 }
 
+label {
+  padding: 1px 10px;
+  border: 1px dotted transparent;
+  border-radius: 50%;
+}
+
 label:first-of-type {
   margin-right: 15px;
 }
 
 label:hover {
   cursor: pointer;
-  text-decoration: underline;
+  border-color: #f2f2f2;
 }
