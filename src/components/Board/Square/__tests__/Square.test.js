@@ -36,10 +36,7 @@ describe('Square', () => {
     expect(container.querySelector('button').value).toBe('');
 
     rerender(
-      <Square value="X" handleClick={() => {}} index={0} />,
-      {
-        container: document.body.appendChild(tableRow)
-      }
+      <Square value="X" handleClick={() => {}} index={0} />
     );
     expect(getByText('X')).toBeTruthy();
   });

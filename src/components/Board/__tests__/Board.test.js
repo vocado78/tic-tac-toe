@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 
 import Board from '../Board';
 
+
 describe('Board', () => {
   it('renders 3 rows with a total of 9 cells with default props', () => {
     const board = Array(9).fill(null);
