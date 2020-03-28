@@ -1,4 +1,4 @@
-import { ALL_ROWS, STATUS } from '../constants';
+import { ALL_ROWS, STATUS, INITIAL_BOARD } from '../constants';
 
 
 const getWinner = (board) => {
@@ -32,7 +32,7 @@ export const clearBoardIfGameOver = (board) => {
   const winner = getWinner(board);
 
   if (winner || fullBoard) {
-    return Array(9).fill(null);
+    return INITIAL_BOARD;
   }
 
   return board;

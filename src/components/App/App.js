@@ -6,6 +6,7 @@ import TextArea from '../TextArea/TextArea';
 import { ResetButton } from '../Button';
 import { setSquareValue, clearBoardIfGameOver } from '../../services/gameLogic';
 import getBestEmptySquare from '../../services/ai';
+import { INITIAL_BOARD } from '../../constants';
 
 
 export default class App extends Component {
@@ -13,7 +14,7 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      board: Array(9).fill(null),
+      board: INITIAL_BOARD,
       nextPlayer: '',
       singlePlayer: null
     };
@@ -84,7 +85,7 @@ export default class App extends Component {
 
   handleReset = () => {
     this.setState({
-      board: Array(9).fill(null),
+      board: INITIAL_BOARD,
       nextPlayer: '',
       singlePlayer: null
     });

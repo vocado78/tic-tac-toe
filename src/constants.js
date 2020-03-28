@@ -26,3 +26,5 @@ export const STATUS = {
   DRAW: 'It was a draw, nice try though.',
   NEXT: 'Next player is: ',
 };
+
+export const INITIAL_BOARD = Array(9).fill(null);
