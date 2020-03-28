@@ -94,7 +94,11 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Board board={this.state.board} handleSquareClick={this.handleSquareClick} nextPlayer={this.state.nextPlayer} />
+        <Board
+          board={this.state.board}
+          handleSquareClick={this.handleSquareClick}
+          nextPlayer={this.state.nextPlayer}
+        />
         <TextArea
           board={this.state.board}
           singlePlayer={this.state.singlePlayer}
