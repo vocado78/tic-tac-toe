@@ -3,14 +3,13 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 import TextArea from '../TextArea';
-import { QUESTIONS, STATUS } from '../../../constants';
+import { QUESTIONS, STATUS, INITIAL_BOARD } from '../../../constants';
 
 
-const board = Array(9).fill(null);
 const renderTextArea = (singlePlayer = null, nextPlayer = '') => ({
   ...render(
     <TextArea
-      board={board}
+      board={INITIAL_BOARD}
       setGameType={() => {}}
       toggleNextPlayer={() => {}}
       singlePlayer={singlePlayer}
